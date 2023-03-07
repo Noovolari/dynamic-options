@@ -1,0 +1,39 @@
+<div class="option-area">
+  <div class="option-navigator">
+    <ul class="option-navigator-list">
+      <li *ngFor="let menuVoice of dynamicSettings.menuVoices">
+        <a href="#{{menuVoice.keyId}}">{{menuVoice.keyId | humanCase }}</a>
+      </li>
+    </ul>
+  </div>
+  <div class="option-panel">
+    <div class="option-set" *ngFor="let menuVoice of dynamicSettings.menuVoices">
+      <div id="{{menuVoice.keyId}}">
+        <h2>{{menuVoice.title | humanCase }}</h2>
+        <p>{{menuVoice.description}}</p>
+        <br>
+        <div class="option-properties">
+          <div class="option-group" *ngFor="let item of $any(menuVoice.properties) | keyvalue">
+            <h3 class="option-group-title">{{$any(item.key) | humanCase }}</h3>
+            <ul class="option-group-list">
+              <li *ngFor="let property of $any(item.value)">
+                <b>{{property.title | humanCase }}</b><br>
+                <p>{{property.description}}</p>
+
+                <input class="option-control option-text" [type]="property.type" [value]="property.default" *ngIf="property.type === eOptionType.text" />
+                <input class="option-control option-password" [type]="property.type" [value]="property.default" *ngIf="property.type === eOptionType.password" />
+                <input class="option-control option-email" [type]="property.type" [value]="property.default" *ngIf="property.type === eOptionType.email" />
+                <input class="option-control option-number" [type]="property.type" [value]="property.default" *ngIf="property.type === eOptionType.number" />
+
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="option-save-panel">
+      <button (click)="save()">Save Options</button>
+    </div>
+  </div>
+</div>

@@ -5,6 +5,11 @@
     "baseUrl": "./",
     "outDir": "./dist/out-tsc",
     "forceConsistentCasingInFileNames": true,
+    "paths": {
+      "dynamic-settings": [
+        "dist/dynamic-settings"
+      ]
+    },
     "strict": true,
     "noImplicitOverride": true,
     "noPropertyAccessFromIndexSignature": true,
@@ -16,11 +21,11 @@
     "experimentalDecorators": true,
     "moduleResolution": "node",
     "importHelpers": true,
-    "target": "ES2022",
-    "module": "ES2022",
+    "target": "ES2020",
+    "module": "ES2020",
     "useDefineForClassFields": false,
     "lib": [
-      "ES2022",
+      "ES2020",
       "dom"
     ]
   },
@@ -28,6 +33,7 @@
     "enableI18nLegacyMessageIdFormat": false,
     "strictInjectionParameters": true,
     "strictInputAccessModifiers": true,
-    "strictTemplates": true
+    "strictTemplates": true,
+    "compileNonExportedClasses": false,
   }
 }
